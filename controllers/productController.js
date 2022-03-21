@@ -22,12 +22,13 @@ const product_details = async (req, res) => {
 
 // Add New product
 const product_create = async (req, res) => {
-    const product = new Product({
-        title: req.body.title,
-        price: req.body.price,
-        image: req.body.image,
-        details: req.body.details
-      });
+  const product = new Product({
+          id: req.body.id,
+          author: req.body.author,
+          book_name: req.body.book_name,
+          pages: req.body.pages,
+          published_year: req.body.published_year,
+        });
     
       try {
         const savedProduct = await product.save();
@@ -40,12 +41,13 @@ const product_create = async (req, res) => {
 // Update product
 const product_update = async (req, res) => {
     try {
-        const product = {
-          title: req.body.title,
-          price: req.body.price,
-          image: req.body.image,
-          details: req.body.details
-        };
+      const product = {
+        id: req.body.id,
+        author: req.body.author,
+        book_name: req.body.book_name,
+        pages: req.body.pages,
+        published_year: req.body.published_year,
+      };
     
         const updatedProduct = await Product.findByIdAndUpdate(
           { _id: req.params.productId },
